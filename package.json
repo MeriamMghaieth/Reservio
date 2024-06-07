@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint --max-warnings=0 --fix . && prettier --write **/*.{js,jsx,ts,tsx,json} ",
+    "lint": "lint-staged",
     "preview": "vite preview",
     "prepare": "husky",
     "commit": "npx git-cz"
