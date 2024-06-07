@@ -1,0 +1,43 @@
+{
+  "name": "m",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint --max-warnings=0 --fix . && prettier --write **/*.{js,jsx,ts,tsx,json} ",
+    "preview": "vite preview",
+    "prepare": "husky",
+    "commit": "npx git-cz"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "husky": "^9.0.11",
+    "husky-init": "^8.0.0",
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.3.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "eslint --max-warnings=0 --fix",
+      "prettier --write"
+    ]
+  }
+}
