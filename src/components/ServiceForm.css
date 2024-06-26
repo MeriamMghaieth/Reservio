@@ -1,0 +1,75 @@
+.service-form-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    margin-top: 3rem; /* Added margin to lower the boxes */
+    color: black; /* Set text color to black */
+}
+
+.service-form {
+    flex: 1;
+    margin-right: 2rem;
+    padding: 2rem;
+    background-color: #f2eeee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.service-form h2 {
+    margin-bottom: 1rem;
+}
+
+.service-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.service-form input,
+.service-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.service-form button {
+    padding: 0.5rem 2rem;
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.service-form button:hover {
+    background-color: #0056b3;
+}
+
+.service-info {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f2eeee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: black; /* Set text color to black */
+}
+
+.service-info h3 {
+    margin-bottom: 1rem;
+}
+
+.service-info p {
+    margin-bottom: 1rem;
+}
+
+.service-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.service-info li {
+    margin-bottom: 0.5rem;
+}

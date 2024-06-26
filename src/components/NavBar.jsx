@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './NavBar.css'; 
 import Logo from '../assets/logores.png';
 
@@ -20,27 +21,28 @@ const Navbar = () => {
       <div className="container">
         <div className="logo-container">
           <img src={Logo} alt="Logo" className="logo" />
+          <span className="navbar-title">Reservio</span>
         </div>
         <div className="center-items">
           <ul className="nav-links">
-            <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`} onClick={() => handleClick('Accueil')}>
-              <a href="/">Accueil</a>
+            <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`}>
+              <Link to="/">Accueil</Link>
             </li>
-            <li className={`nav-item ${activeItem === 'Communauté' ? 'active' : ''}`} onClick={() => handleClick('Communauté')}>
-              <a href="/#">Communauté</a>
+            <li className={`nav-item ${activeItem === 'Communauté' ? 'active' : ''}`}>
+              <Link to="/#" onClick={() => handleClick('Communauté')}>Communauté</Link>
             </li>
-            <li className={`nav-item ${activeItem === 'À propos' ? 'active' : ''}`} onClick={() => handleClick('À propos')}>
-              <a href="/#">À propos</a>
+            <li className={`nav-item ${activeItem === 'À propos' ? 'active' : ''}`}>
+              <Link to="/#" onClick={() => handleClick('À propos')}>À propos</Link>
             </li>
-            <li className={`nav-item dropdown ${activeItem === 'Catégories' ? 'active' : ''}`} onClick={() => handleClick('Catégories')}>
-              <a href="#">Catégories</a>
+            <li className={`nav-item dropdown ${activeItem === 'Catégories' ? 'active' : ''}`}>
+              <Link to="#">Catégories</Link>
               <ul className="dropdown-content">
-                <li><a href="/services">Hébergement</a></li>
-                <li><a href="/services">Restauration</a></li>
-                <li><a href="/services">Transport</a></li>
-                <li><a href="/services">Activités</a></li>
-                <li><a href="/services">Soins et bien-être</a></li>
-                <li><a href="/services">Événements spéciaux</a></li>
+                <li><Link to="/services">Hébergement</Link></li>
+                <li><Link to="/services">Restauration</Link></li>
+                <li><Link to="/services">Transport</Link></li>
+                <li><Link to="/services">Activités</Link></li>
+                <li><Link to="/services">Soins et bien-être</Link></li>
+                <li><Link to="/services">Événements spéciaux</Link></li>
               </ul>
             </li>
           </ul>
@@ -48,14 +50,14 @@ const Navbar = () => {
         <div className="right-items">
           <ul className="nav-links">
             <li className="nav-item dropdown">
-              <a href="#">S'inscrire</a>
+              <Link to="#">S'inscrire</Link>
               <ul className="dropdown-content">
-                <li><a href="/register/client">Client</a></li>
-                <li><a href="/register/provider">Fournisseur</a></li>
+                <li><Link to="/register/client">Client</Link></li>
+                <li><Link to="/register/provider">Fournisseur</Link></li>
               </ul>
             </li>
-            <li className={`nav-item ${activeItem === 'Se connecter' ? 'active' : ''}`} onClick={() => handleClick('Se connecter')}>
-              <a href="/login">Se connecter</a>
+            <li className={`nav-item ${activeItem === 'Se connecter' ? 'active' : ''}`}>
+              <Link to="/login">Se connecter</Link>
             </li>
           </ul>
         </div>
