@@ -1,0 +1,25 @@
+.provider-dashboard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    min-height: 100vh; /* Assure que la hauteur minimum de la page soit égale à la taille de l'écran */
+  }
+  
+  .provider-nav {
+    background-color: #1a202c; /* Couleur de fond du navbar */
+    color: white; /* Couleur du texte */
+    padding: 1rem; /* Espacement intérieur */
+  }
+  
+  .provider-content {
+    flex: 1; /* Permet au contenu de remplir l'espace restant */
+    padding: 1rem; /* Espacement intérieur */
+  }
+  
+  .provider-footer {
+    background-color: #f0f0f0; /* Couleur de fond du pied de page */
+    color: #333; /* Couleur du texte */
+    padding: 1rem; /* Espacement intérieur */
+    text-align: center; /* Centrer le texte */
+  }
+  

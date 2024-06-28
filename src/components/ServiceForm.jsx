@@ -12,7 +12,6 @@ const ServiceForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logic to handle form submission
     console.log({
       title,
       description,
