@@ -110,7 +110,7 @@
 .right-items {
   display: flex;
   align-items: center;
-  margin-left: auto; /* Align to the left */
+  margin-right: 30px; /* Align to the left */
 }
 
 .right-items .nav-item {

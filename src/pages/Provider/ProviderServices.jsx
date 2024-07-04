@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import './List.css';
 const ProviderServices = () => {
   const [services, setServices] = useState([]);
 
@@ -24,7 +24,7 @@ const ProviderServices = () => {
 
   return (
     <div className="provider-services">
-      <h2>Services</h2>
+      <h2>Vos Services</h2>
       <ul>
         {services.map((service) => (
           <li key={service.ID}> {/* Ensure the key is unique */}

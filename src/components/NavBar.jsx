@@ -12,6 +12,7 @@ const Navbar = () => {
   const auth = useSelector(state => state.auth);
   const { user } = auth;
 
+  console.log(user.role);
   const [activeItem, setActiveItem] = useState('');
 
   // Fonction pour gérer le clic sur un lien et définir l'élément actif
@@ -35,7 +36,7 @@ const Navbar = () => {
         </div>
         <div className="center-items">
           <ul className="nav-links">
-            {/* {!user && ( */}
+            {!user.isConnected && (
               <>
                 <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`}>
                   <Link to="/" onClick={() => handleClick('Accueil')}>Accueil</Link>
@@ -58,7 +59,7 @@ const Navbar = () => {
                   </ul>
                 </li>
               </>
-            {/* )} */}
+             )} 
           </ul>
         </div>
         <div className="right-items">

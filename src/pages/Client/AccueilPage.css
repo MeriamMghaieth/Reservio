@@ -1,0 +1,88 @@
+.services-container {
+  padding: 50px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.services-container h1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  color: #333;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-details {
+  padding: 20px;
+}
+
+.service-details h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #322e2e;
+}
+
+.service-details p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.user-info {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.user-info h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.user-info p {
+  margin: 5px 0;
+  color: #777;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #bcadad;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reservation-button:hover {
+  background-color: #bcadad;
+}

@@ -27,16 +27,16 @@ const Login = () => {
     console.log('Submitting form:', form);
     const response = await dispatch(LoginAction(form));
     console.log('Response from API:', response);
-
+    console.log('response',response)
     if (response.success) {
       switch (response.user.role) {
-        case 'ROLE_ADMIN':
+        case 'ADMIN':
           navigate('/admin');
           break;
         case 'SERVICE_PROVIDER':
           navigate('/provider');
           break;
-        case 'ROLE_CLIENT':
+        case 'CLIENT':
           navigate('/');
           break;
         default:

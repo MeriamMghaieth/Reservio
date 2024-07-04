@@ -1,0 +1,42 @@
+.provider-services {
+    padding: 2rem;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #f9f9f9;
+    margin-top: 3rem;
+    color: black;
+  }
+  
+  .provider-services h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .provider-services ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .provider-services li {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f2eeee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .provider-services li h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .provider-services li p {
+    margin-bottom: 1rem;
+  }
+  
+  .provider-services li img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
