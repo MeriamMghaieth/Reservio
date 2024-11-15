@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Logout } from '../redux/Action/Auth';
 import './NavBar.css';
 import Logo from '../assets/logores.png';
-import { FaUser } from 'react-icons/fa'; // Assurez-vous que l'import est correctement configuré ici
+import { FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -12,10 +12,8 @@ const Navbar = () => {
   const auth = useSelector(state => state.auth);
   const { user } = auth;
 
-  console.log(user.role);
   const [activeItem, setActiveItem] = useState('');
 
-  // Fonction pour gérer le clic sur un lien et définir l'élément actif
   const handleClick = (itemName) => {
     setActiveItem(itemName);
   };
@@ -23,9 +21,6 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(Logout());
   };
-
-  // // Vérifie si l'utilisateur est connecté
-  // const isLoggedIn = !!user;
 
   return (
     <nav className="navbar">
@@ -36,7 +31,7 @@ const Navbar = () => {
         </div>
         <div className="center-items">
           <ul className="nav-links">
-            {!user.isConnected && (
+            {!(user.role === 'ADMIN' || user.role === 'CLIENT' || user.role === 'SERVICE_PROVIDER') && (
               <>
                 <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`}>
                   <Link to="/" onClick={() => handleClick('Accueil')}>Accueil</Link>
@@ -59,75 +54,90 @@ const Navbar = () => {
                   </ul>
                 </li>
               </>
-             )} 
-          </ul>
-        </div>
-        <div className="right-items">
-          <ul className="nav-links">
-            {!user.isCo && (
-              <>
-                <li className="nav-item dropdown">
-                  <Link to="#">S'inscrire</Link>
-                  <ul className="dropdown-content">
-                    <li><Link to="/register/client">Client</Link></li>
-                    <li><Link to="/register/provider">Fournisseur</Link></li>
-                  </ul>
-                </li>
-                <li className={`nav-item ${activeItem === 'Se connecter' ? 'active' : ''}`}>
-                  <Link to="/login">Se connecter</Link>
-                </li>
-              </>
             )}
-            {user.role === 'SERVICE_PROVIDER' && (
+            {user && user.role === 'SERVICE_PROVIDER' && (
               <>
+                <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`}>
+                  <Link to="/provider/dashboard/acceuil" onClick={() => handleClick('Accueil')}>Accueil</Link>
+                </li>
+                
+                <li className={`nav-item ${activeItem === 'Tableau de Bord' ? 'active' : ''}`}>
+                  <Link to="/provider/dashboard/statistics" onClick={() => handleClick('Tableau de Bord')}>Tableau de Bord</Link>
+                </li>
+                <li className={`nav-item ${activeItem === 'Publication' ? 'active' : ''}`}>
+                  <Link to="/provider/dashboard/reservations" onClick={() => handleClick('Publication')}>Publication</Link>
+                </li>
+                <li className={`nav-item ${activeItem === 'Services' ? 'active' : ''}`}>
+                  <Link to="/provider/dashboard/services" onClick={() => handleClick('Services')}>Services</Link>
+                </li>
                 <li className={`nav-item ${activeItem === 'Demandes' ? 'active' : ''}`}>
-                  <Link to="/dashboard/demands">Demandes</Link>
-                </li>
-                <li className={`nav-item ${activeItem === 'Mon profil' ? 'active' : ''}`}>
-                  <Link to="/dashboard/profile">
-                    <FaUser className="profile-icon" /> Mon Profil
-                  </Link>
-                </li>
-                <li className={`nav-item ${activeItem === 'Support' ? 'active' : ''}`}>
-                  <Link to="/dashboard/support">Support</Link>
-                </li>
-                <li className={`nav-item ${activeItem === 'Services' ? 'active' : ''}`}>
-                  <Link to="/dashboard/services">Services</Link>
-                </li>
-                <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`}>
-                  <Link to="/dashboard/provider">Accueil</Link>
-                </li>
-                <li className={`nav-item ${activeItem === 'Se Déconnecter' ? 'active' : ''}`}>
-                  <Link to="/logout" onClick={handleLogout}>Se Déconnecter</Link>
+                  <Link to="/provider/dashboard/demandes" onClick={() => handleClick('Demandes')}>Demandes</Link>
                 </li>
               </>
             )}
-            { user.role === 'CLIENT' && (
+            {user && user.role === 'CLIENT' && (
               <>
                 <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`}>
-                  <Link to="/dashboard/client">Accueil</Link>
+                  <Link to="/dashboard/client" onClick={() => handleClick('Accueil')}>Accueil</Link>
                 </li>
                 <li className={`nav-item ${activeItem === 'Services' ? 'active' : ''}`}>
-                  <Link to="/dashboard/services">Services</Link>
+                  <Link to="/dashboard/services" onClick={() => handleClick('Services')}>Services</Link>
                 </li>
                 <li className={`nav-item ${activeItem === 'Mes Demandes' ? 'active' : ''}`}>
-                  <Link to="/dashboard/requests">Mes Demandes</Link>
+                  <Link to="/dashboard/requests" onClick={() => handleClick('Mes Demandes')}>Mes Demandes</Link>
                 </li>
-                <li className={`nav-item ${activeItem === 'Mon Profil' ? 'active' : ''}`}>
-                  <Link to="/dashboard/profile">
-                    <FaUser className="profile-icon" /> Mon Profil
-                  </Link>
-                </li>
+            
                 <li className={`nav-item ${activeItem === 'Support' ? 'active' : ''}`}>
-                  <Link to="/dashboard/support">Support</Link>
+                  <Link to="/dashboard/support" onClick={() => handleClick('Support')}>Support</Link>
                 </li>
-                <li className={`nav-item ${activeItem === 'Se Déconnecter' ? 'active' : ''}`}>
-                  <Link to="/logout" onClick={handleLogout}>Se Déconnecter</Link>
+              </>
+            )}
+            {user && user.role === 'ADMIN' && (
+              <>
+                <li className={`nav-item ${activeItem === 'Accueil' ? 'active' : ''}`}>
+                  <Link to="/admin" onClick={() => handleClick('Accueil')}>Accueil</Link>
+                </li>
+                
+                <li className={`nav-item ${activeItem === 'Catégories' ? 'active' : ''}`}>
+                  <Link to="/admin/categories" onClick={() => handleClick('Catégories')}>Catégories</Link>
+                </li>
+                <li className={`nav-item ${activeItem === 'Statistiques' ? 'active' : ''}`}>
+                  <Link to="/admin/stats" onClick={() => handleClick('Statistiques')}>Statistiques</Link>
                 </li>
               </>
             )}
           </ul>
         </div>
+        {(user.role === 'ADMIN' || user.role === 'CLIENT' || user.role === 'SERVICE_PROVIDER') && (
+          <div className="right-items">
+            <ul className="nav-links">
+            <li className={`nav-item ${activeItem === 'Mon Profil' ? 'active' : ''}`}>
+                  <Link to="/dashboard/profile" onClick={() => handleClick('Mon Profil')}>
+                    <FaUser className="profile-icon" /> Mon Profil
+                  </Link>
+                </li>
+              <li className={`nav-item ${activeItem === 'Se Déconnecter' ? 'active' : ''}`}>
+                <Link to="/logout" onClick={handleLogout}>Se Déconnecter</Link>
+              </li>
+            </ul>
+          </div>
+        )}
+        {!(user.role === 'ADMIN' || user.role === 'CLIENT' || user.role === 'SERVICE_PROVIDER') && (
+          <div className="right-items">
+            <ul className="nav-links">
+              <li className="nav-item dropdown">
+                <Link to="#">S'inscrire</Link>
+                <ul className="dropdown-content">
+                  <li><Link to="/register/client">Client</Link></li>
+                  <li><Link to="/register/provider">Fournisseur</Link></li>
+                </ul>
+              </li>
+              <li className={`nav-item ${activeItem === 'Se connecter' ? 'active' : ''}`}>
+                <Link to="/login">Se connecter</Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </nav>
   );
