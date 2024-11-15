@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+<<<<<<< HEAD
 yarn lint --concurrent false
+=======
+yarn lint-staged --concurrent false
+npm test
+yarn lint
+>>>>>>> 95bde6719949152210bd138e14ca114b1517631d

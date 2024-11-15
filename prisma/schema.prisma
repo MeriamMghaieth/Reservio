@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Définition de l'enum Role
+enum Role {
+  ADMIN
+  CLIENT
+  SERVICE_PROVIDER
+}
+
+enum ReservationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model User {
+  ID            Int            @id @default(autoincrement())
+  Nom           String
+  Prenom        String
+  Email         String         @unique
+  Num           Int
+  Role          Role
+  MotDePasse    String
+  Validation    Boolean        @default(false)
+  services      Service[]
+  reservations  Reservation[]
+  favoris       Favoris[]
+  paiements     Paiement[]
+  notifications Notification[]
+}
+
+model Service {
+  ID           Int           @id @default(autoincrement())
+  Description  String
+  Prix         Float
+  Date         DateTime
+  Titre        String
+  Image        String
+  Place        String
+  userId       Int
+  user         User          @relation(fields: [userId], references: [ID])
+  categorieId  Int
+  categorie    Categorie     @relation(fields: [categorieId], references: [ID])
+  reservations Reservation[]
+  favoris      Favoris[]
+}
+
+model Reservation {
+  ID        Int               @id @default(autoincrement())
+  DATE      DateTime          @default(now())
+  statut    ReservationStatus
+  userId    Int
+  user      User              @relation(fields: [userId], references: [ID])
+  serviceId Int
+  service   Service           @relation(fields: [serviceId], references: [ID])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  message   String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [ID])
+  createdAt DateTime @default(now())
+}
+
+model Favoris {
+  ID        Int     @id @default(autoincrement())
+  userId    Int
+  user      User    @relation(fields: [userId], references: [ID])
+  serviceId Int
+  service   Service @relation(fields: [serviceId], references: [ID])
+}
+
+model Categorie {
+  ID       Int       @id @default(autoincrement())
+  Nom      String
+  services Service[]
+}
+
+model Paiement {
+  ID       Int    @id @default(autoincrement())
+  montant  Float
+  NumCarte String
+  userId   Int
+  user     User   @relation(fields: [userId], references: [ID])
+}
